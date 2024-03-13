@@ -3,6 +3,7 @@ A comprehensive Library Management System designed to streamline the processes o
 
 
 Prerequisites:
+
 Java Development Kit (JDK):
 Ensure you have Java installed on your system. You can download it from the official Oracle website or use an alternative like OpenJDK.
 
