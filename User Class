@@ -1,0 +1,39 @@
+package My1stClass;
+
+import java.util.ArrayList;
+
+public class User {
+    //private attributes of User class
+    private String user_id;
+    private String name;
+    private String contact_info;
+    //public access arraylist of borrowed books
+    public ArrayList<Book> borrowed_books;
+    //setter methods to set/update user id, user name and contact info
+    public void setUserId(String user_id){
+        this.user_id = user_id;
+    }
+    public void setUserName(String name){
+        this.name = name;
+    }
+    public void setUserContact(String contact_info){
+        this.contact_info = contact_info;
+    }
+    //getter methods to get updated user id, user name and contact info
+    public String getUserId(){
+        return user_id;
+    }
+    public String getUserName(){
+        return name;
+    }
+    public String getUserContact(){
+        return contact_info;
+    }
+    //User() constructor
+    public User(String user_id, String name, String contact_info){
+        this.user_id = user_id;
+        this.name = name;
+        this.contact_info = contact_info;
+        this.borrowed_books = new ArrayList<>();
+    }
+}
