@@ -1,5 +1,7 @@
 # Library-Management-System-
 A comprehensive Library Management System designed to streamline the processes of book cataloging, lending, and tracking within a library setting. This system aims to enhance the efficiency of library operations and provide a user-friendly experience for both librarians and members of the library..
+
+
 Prerequisites:
 Java Development Kit (JDK): Ensure you have Java installed on your system. You can download it from the official Oracle website or use an alternative like OpenJDK.
 
