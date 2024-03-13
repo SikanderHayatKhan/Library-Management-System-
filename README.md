@@ -1,5 +1,48 @@
 # Library-Management-System-
 A comprehensive Library Management System designed to streamline the processes of book cataloging, lending, and tracking within a library setting. This system aims to enhance the efficiency of library operations and provide a user-friendly experience for both librarians and members of the library..
+Prerequisites:
+Java Development Kit (JDK): Ensure you have Java installed on your system. You can download it from the official Oracle website or use an alternative like OpenJDK.
+
+Integrated Development Environment (IDE): Use an IDE such as Eclipse, IntelliJ, or Visual Studio Code to make development and debugging easier.
+
+Project Setup:
+Create a New Project:
+
+Open your IDE and create a new Java project.
+Copy and paste the provided classes (LibraryManagementSystem, Book, Library, and User) into the appropriate files in your project.
+Run the Project:
+
+Locate the main method in the Assignment_01 class.
+Right-click on the main method and choose "Run java" or "Debug java" to execute the program.
+Input and Navigation:
+
+Follow the on-screen instructions to navigate through the menu.
+Enter the corresponding option number to perform various operations, such as adding books, users, checking out and returning books, searching for books and users, and saving/loading data.
+Data Persistence:
+
+The program saves data to books.txt and users.txt when you choose the "Save Data" option.
+The program loads data from these files when you choose the "Load Data" option.
+Key Features and Functionalities:
+Adding Books and Users:
+
+Option 1: Add new books.
+Option 2: Add new users.
+Checking Out and Returning Books:
+
+Option 3: Check out a book by entering the user ID and book ID.
+Option 4: Return a book by entering the user ID and book ID.
+Displaying and Searching:
+
+Option 5: Display details of available books.
+Option 6: Search for a book by title or author.
+Option 7: Search for a user by name or ID.
+Data Persistence:
+
+Option 8: Save data to files (books.txt and users.txt).
+Option 9: Load data from files.
+Exit Program:
+
+Option 10: Exit the program.
 # Output
 ![Screenshot 2024-03-13 235315](https://github.com/SikanderHayatKhan/Library-Management-System-/assets/142599277/0c16395d-ac1b-4afa-811f-71de26822d6b)
 ![Screenshot 2024-03-13 235450](https://github.com/SikanderHayatKhan/Library-Management-System-/assets/142599277/828ae257-0bdc-4243-9cc7-ede11b677c71)
