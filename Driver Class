@@ -1,0 +1,182 @@
+package My1stClass;
+import java.util.*;
+
+public class LibraryManagementSystem{
+    //Main driving function
+    public static void main(String[] args) { 
+        System.out.println("\t\t\t\t<><><><><><><><><><><><><><><><><> MENU <><><><><><><><><><><><><><><><><>\n");
+        //creating object of Scanner class to input
+        Scanner var = new Scanner(System.in); 
+        //creating object of Library class to access attributes and methods of Library class
+        Library library = new Library(); 
+        //creating object of Book class to access attributes and methods of Book class
+        Book newBook = new Book(null, null, null, null, false);
+        //while loop to run program infinitely until the user asks to quit by entering "10"
+        while (true) {
+            //menu() function displays options to ask user what to do
+            menu();
+            System.out.print("\n\t\t\t\t\t\t\t\tOption: ");
+            //Taking a string as an input
+            String option = var.next();
+            //using switch-case statements to allow user to select what to do accoring to their option input
+            switch (option) {
+                //case "1" is for adding new books
+                case "1": 
+                    var.nextLine();   
+                    //Book Id is input as a string as many library management systems have letters in book id               
+                    System.out.print("Book ID: ");
+                    String bookid = var.nextLine();  
+                    //Book Title is input as a string
+                    System.out.print("Book Title: ");
+                    String title = var.nextLine();
+                    //Book Author Name is input as a string 
+                    System.out.print("Author's Name: ");
+                    String author = var.nextLine(); 
+                    //Book Genre is input as a string
+                    System.out.print("Genre: ");
+                    String genre = var.nextLine(); 
+                    //Status of book shows availability which in this case is made true
+                    boolean status = true;
+                    //constructor "Book" of class Book is called where attributes of newBook are passed and updated
+                    newBook = new Book(bookid, title, author, genre, status);
+                    //A method of Library class is accessed through object of Library class made previosly and newBook (which contains attributes of newly added book) is passed as an argument in this method
+                    library.addNewBooks(newBook);
+                    break;
+                //case "2" is for adding new users
+                case "2":
+                    var.nextLine();
+                    //User Id is input as a string as many library management systems have letters in user id
+                    System.out.print("User ID: ");
+                    String user_id = var.nextLine();
+                    //User name is input as string
+                    System.out.print("User Name: ");
+                    String name = var.nextLine();
+                    //Contact Info of user is input as string
+                    System.out.print("Contact Info: ");
+                    String contact_info = var.nextLine();
+                    //constructor "User" of class User is called where attributes of newUser are passed and updated
+                    User newUser = new User(user_id, name, contact_info);
+                    //A method of Library class is accessed through object of Library class made previosly and newUser (which contains attributes of newly added user) is passed as an argument in this method
+                    library.addNewUsers(newUser);
+                    break;
+                //case "3" is for checking out books
+                case "3":
+                    var.nextLine();
+                    System.out.print("User ID: ");
+                    String borrowuserid = var.nextLine();
+                    //return value of findUserById() method is stored in an object of User class
+                    User borrowuser = findUserById(library, borrowuserid);
+                    //if else statements are used to perform action depending on whether entered user id matches the record of users entered
+                    //all these if else statements are also included in error handling of program
+                    if(borrowuser != null)
+                    {
+                        System.out.print("Book ID: ");
+                        String borrowbookid = var.nextLine();
+                        //return value of findBookById() method is stored in an object of Book class
+                        Book borrowbook = findBookById(library, borrowbookid);
+                        //if else statements are used to perform action depending on whether entered Book id matches the record of books entered
+                        if (borrowbook != null) {
+                            //method of Library class is accessed by using previously made object of Library class
+                            library.checkOut(borrowuser, borrowbook);
+                        }
+                        else{
+                            System.out.println("Book not available.");
+                        }
+                    }
+                    else{
+                        System.out.println("User not available.");
+                    }
+                    break;
+                //case "4" is for returning checked out books
+                case "4":
+                    //same function as above (i-e: case "3") except that here retutning method of Library class is accessed by previously made object of Library class instead of checkOut mehtod
+                    var.nextLine();
+                    System.out.print("User ID: ");
+                    String returnuserid = var.nextLine();
+                    User returnuser = findUserById(library, returnuserid);
+                    if(returnuser != null){
+                        System.out.print("Book ID: ");
+                        String returnbookid = var.nextLine();
+                        Book returnbook = findBookById(library, returnbookid);
+                        if (returnbook != null) {
+                            //returning() method is accessed through object of Library class to return borrowed books
+                            library.returning(returnuser, returnbook);
+                        }
+                        else{
+                            System.out.println("Book not available.");
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("User not available.");
+                    }
+                    break;
+                //case "5" is for displaying details of entered books
+                case "5":
+                    //displayBooks() method of Library class is accessed through an object of Library class to display info of entered books
+                    library.displayBooks();
+                    break;
+                //case "6" is for searching book by author name or book title
+                case "6":
+                    var.nextLine();
+                    System.out.print("Book Title/Book Author: ");
+                    String BookInfo = var.nextLine();
+                    //searchBooks() method of Library class is accessed through an object of Library class to search books by book title or author
+                    library.searchBooks(BookInfo);
+                    break;
+                //case "7" is for searching user by name or id
+                case "7":
+                    var.nextLine();
+                    System.out.print("User Name/User ID: ");
+                    String UserInfo = var.nextLine();
+                    //searchUser() method of Library class is accessed through an object of Library class to search users by user name or id
+                    library.searchUser(UserInfo);
+                    break;
+                //case "8" is for saving entered data whether of books or users
+                case "8":
+                    // saveData() method of Library class is accessed through an object of Library class to save entered data
+                    library.saveData();
+                    break;
+                //case "9" is for loading already saved data if someone accidently closes the program
+                case "9":
+                    // loadData() method of Library class is accessed through an object of Library class to load previously saved data
+                    library.loadData();
+                    break;
+                //case "10" is for quitting from the program
+                case "10":
+                    // object of Scanner class is closed here
+                    var.close(); 
+                    //to exit the program it is used
+                    System.exit(0); 
+                default:
+                    System.out.println("Invalid Input!!!");
+                    break;
+            }
+
+        }
+    }
+    //method to check whether eneterd user id exists in the record or not
+    private static User findUserById(Library library, String userid){
+        //enhanced for loop to iterate through the whole arraylist of users
+        for(User user : library.users){
+            if(user.getUserId().equals(userid)){
+                return user; //returns user id if it exists
+            }
+        }
+        return null; //returns null if user id does not exist
+    }
+    //method to check whether entered book id exists in the record or not
+    private static Book findBookById(Library library, String bookid){
+        //enhanced for loop to itereate through the whole arraylist of books 
+        for(Book book : library.books){
+            if(book.getBookId().equals(bookid)){
+                return book; //returns book id if it exists
+            }
+        }
+        return null; //returns null if book id does not exist
+    }
+    //menu() method to display options before user
+    static void menu(){
+        System.out.printf("\t\t\t\t\t\t\t\t%s%n\t\t\t\t\t\t\t\t%s%n\t\t\t\t\t\t\t\t%s%n\t\t\t\t\t\t\t\t%s%n\t\t\t\t\t\t\t\t%s%n\t\t\t\t\t\t\t\t%s%n\t\t\t\t\t\t\t\t%s%n\t\t\t\t\t\t\t\t%s%n\t\t\t\t\t\t\t\t%s%n\t\t\t\t\t\t\t\t%s%n", "1. Add new book.", "2. Add new user.", "3. Checkout book.", "4. Return book.", "5. Show details of books.", "6. Search Book.", "7. Search User.", "8. Save Data.", "9. Load Data.", "10. Exit the program.");
+    }
+}
